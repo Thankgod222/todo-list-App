@@ -1,0 +1,81 @@
+.container {
+  background-color: whitesmoke;
+  width: 1/2;
+  margin-left: 220px;
+  margin-right: 220px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: 20vh;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-header {
+  width: 30px;
+  height: 30px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.form-icon {
+  position: absolute;
+  /* left: 10px; */
+  margin-left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
+}
+
+.form-input {
+  width: 300px;
+  height: 40px;
+  /* border-radius: 20px; */
+  border: 3px solid gray;
+  padding-left: 40px;
+}
+
+.add {
+  margin-left: 480px;
+  margin-top: 5px;
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: blue;
+  color: white;
+}
+
+.todo-list {
+  margin-top: 20px;
+  margin-left: 250px;
+  margin-right: 250px;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+}
+
+.todo-form {
+  border: 3px solid gainsboro;
+  padding: 5px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 100px; */
+  padding: 20px;
+  font-size: large;
+  /* margin-bottom: 200px; */
+}

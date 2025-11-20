@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>TODO LIST</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span
+          ><ion-icon name="checkbox-outline" class="icon-header"></ion-icon
+        ></span>
+        <h1 class="header-h1">TO-DO LIST</h1>
+      </div>
+
+      <div class="form">
+        <form id="form" class="form-form">
+          <i><ion-icon class="form-icon" name="pencil-outline"></ion-icon></i>
+          <input
+            id="form-input"
+            type="text"
+            class="form-input"
+            placeholder="Add a new task"
+          />
+ </div>
+          <button class="add" type="submit">ADD</button>
+        </form>
+     
+
+      <div id="todo-list" class="todo-list">
+        <!-- Todo items will be added here dynamically -->
+          <!--delete icon <ion-icon name="trash-outline"></ion-icon>-->
+          <!--save icon <ion-icon name="save-outline"></ion-icon>-->
+          <!--edit icon <ion-icon name="create-outline"></ion-icon>-->
+       
+      </div>
+
+      <div class="button">
+        <button>Show All</button>
+        <button>active</button>
+        <button>Done</button>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>

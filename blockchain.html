@@ -1,0 +1,138 @@
+const forms = document.getElementById("form");
+const input = document.getElementById("form-input");
+const todoList = document.getElementById("todo-list");
+
+forms.addEventListener("submit", function (e) {
+  e.preventDefault(); // stops page from reloading
+
+  // get the text from input
+  const taskInput = input.value.trim();
+  if (taskInput === "") return;
+
+  createTaskElement(taskInput);
+
+  // Clear the input
+  input.value = "";
+});
+
+// Function to create a task element
+function createTaskElement(taskText, isCompleted = false) {
+  // Create the task container
+  const taskContainer = document.createElement("div");
+  taskContainer.classList.add("task-container");
+
+  // Create the task element
+  const span = document.createElement("span");
+  span.classList.add("todo-form");
+  if (isCompleted) {
+    span.classList.add("completed");
+  }
+
+  // Create the icon
+  const icon = document.createElement("ion-icon");
+  icon.setAttribute("name", isCompleted ? "checkbox" : "square-outline");
+
+  // Create the text node
+  const textNode = document.createTextNode(" " + taskText);
+
+  // Put icon + text inside the span
+  span.appendChild(icon);
+  span.appendChild(textNode);
+
+  // Create buttons container
+  const buttonsContainer = document.createElement("div");
+  buttonsContainer.classList.add("buttons-container");
+
+  // Create edit button
+  const editBtn = document.createElement("button");
+  editBtn.classList.add("edit-btn");
+  const editIcon = document.createElement("ion-icon");
+  editIcon.setAttribute("name", "create-outline");
+  editBtn.appendChild(editIcon);
+  editBtn.setAttribute("title", "Edit");
+
+  // Create save button
+  const saveBtn = document.createElement("button");
+  saveBtn.classList.add("save-btn", "hidden");
+  const saveIcon = document.createElement("ion-icon");
+  saveIcon.setAttribute("name", "save-outline");
+  saveBtn.appendChild(saveIcon);
+  saveBtn.setAttribute("title", "Save");
+
+  // Create delete button
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("delete-btn");
+  const deleteIcon = document.createElement("ion-icon");
+  deleteIcon.setAttribute("name", "trash-outline");
+  deleteBtn.appendChild(deleteIcon);
+  deleteBtn.setAttribute("title", "Delete");
+
+  // Add buttons to buttons container
+  buttonsContainer.appendChild(editBtn);
+  buttonsContainer.appendChild(saveBtn);
+  buttonsContainer.appendChild(deleteBtn);
+
+  // Add task and buttons to task container
+  taskContainer.appendChild(span);
+  taskContainer.appendChild(buttonsContainer);
+
+  //  Add click event to toggle complete/incomplete
+  span.addEventListener("click", function () {
+    // Don't toggle if in edit mode
+    if (taskContainer.classList.contains("edit-mode")) return;
+    
+    // Toggle a CSS class
+    span.classList.toggle("completed");
+
+    // Check if it now has 'completed' class
+    if (span.classList.contains("completed")) {
+      // Change icon to checked
+      icon.setAttribute("name", "checkbox");
+    } else {
+      // Change icon back to empty square
+      icon.setAttribute("name", "square-outline");
+    }
+  });
+
+  // Edit button functionality
+  editBtn.addEventListener("click", function () {
+    // Enter edit mode
+    taskContainer.classList.add("edit-mode");
+    
+    // Make text editable
+    span.contentEditable = true;
+    span.focus();
+    
+    // Select all text
+    const range = document.createRange();
+    range.selectNodeContents(textNode);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    
+    // Toggle buttons
+    editBtn.classList.add("hidden");
+    saveBtn.classList.remove("hidden");
+  });
+
+  // Save button functionality
+  saveBtn.addEventListener("click", function () {
+    // Exit edit mode
+    taskContainer.classList.remove("edit-mode");
+    
+    // Make text non-editable
+    span.contentEditable = false;
+    
+    // Toggle buttons
+    saveBtn.classList.add("hidden");
+    editBtn.classList.remove("hidden");
+  });
+
+  // Delete button functionality
+  deleteBtn.addEventListener("click", function () {
+    taskContainer.remove();
+  });
+
+  // Add to the list
+  todoList.appendChild(taskContainer);
+}
