@@ -14,7 +14,7 @@ form.addEventListener("submit", function (e) {
 
   addTaskToDOM(text, false);    // create UI
   saveTaskToLocalStorage(text); // store it
-
+   
   input.value = "";
 });
 

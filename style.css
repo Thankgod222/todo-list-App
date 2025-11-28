@@ -68,7 +68,18 @@
 .todo-form {
   border: 3px solid gainsboro;
   padding: 5px;
+  display: flex;
+  /* flex-direction: flex; */
+  margin-bottom: 10px;
+  width: 100%;
+  display: inline-block;
 }
+
+/* .todo-form ion-icon,
+.todo-form input,
+.todo-form text {
+  display: block;
+} */
 
 .button {
   display: flex;
@@ -78,4 +89,16 @@
   padding: 20px;
   font-size: large;
   /* margin-bottom: 200px; */
+}
+
+.edit-input {
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  /* font-size: 14px; */
+  font-family: inherit;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none; /* Remove default focus outline */
 }
